@@ -38,7 +38,9 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-<%= f.hidden_field :type_of %>
+      
+      <%= f.hidden_field :type_of, value: params[:type_of]  %>
+
       <div class="actions"><br/>
         <%= f.submit "Sign up", class:"btn btn-warning" %>
       </div>
