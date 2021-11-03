@@ -1,0 +1,21 @@
+<div class="row g-5">
+  <div class="col-md-8">
+    <article class="blog-post">
+      <h2 class="blog-post-title"><%= @user.first_name + ' ' + @user.last_name %></h2>
+      <hr>
+      <p><%= @user.email %></p>  
+      <% if @user.type_of == "employer" %>    
+        <p><%= @user.company_name %> </p>
+      <% end %>
+    </article>
+
+    <nav class="blog-pagination" aria-label="Pagination">
+    <% if @user == current_user %>
+      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-outline-primary" %> 
+    <% end %>
+      <%= link_to 'Back', root_path, class: "btn btn-outline-secondary" %>        
+    </nav>
+  </div>
+
+</div>
+
