@@ -28,7 +28,7 @@
 	        </li>   
       	<% else %>
 		      <span class="navbar-text nav-space-right" style="float: right;">
-		        	<strong>Not logged in</strong> |
+		        	<strong><%= t 'global.header.not_logged_in' %></strong> |
 		      </span>        	
 		      <li class="nav-item nav-space-right">
 		        <% link_to "Sign up", new_user_registration_path, class:"btn btn-warning" %>
@@ -46,6 +46,25 @@
 		        <%= link_to "Log in", new_user_session_path, class:"btn btn-outline-light me-2" %>
 		      </li>   
 		     <% end %>
+          <li class="nav-item dropdown nav-space-right">         
+            <a class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+            <% if I18n.locale == :en %>
+              <%= image_tag("en.png", alt: "English", width: "20") %>
+              English
+            <% else %>
+              <%= image_tag("hr.png", alt: "Hrvatski", width: "20") %>              
+              Hrvatski
+            <% end %>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Hrvatski", root_path(locale: :hr), class:"dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>              
+              <li><%= link_to "Engleski", root_path(locale: :en), class:"dropdown-item" %> </li>
+            </ul>
+          </li> 
+
+
+
       </ul>
     </div>
   </div>
