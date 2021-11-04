@@ -1,0 +1,8 @@
+hr:
+  global:
+    header:
+      not_logged_in: "Niste ulogovani"
+  home:
+    index:
+      main_title: "Pronađi posao..."
+      main_description: "Jedinstvena platforma za povezivanje poslodavaca i budućih uposlenika. Mjesto gdje poslodavci mogu objavljivati svoje oglase za posao koje je lako pretraživati i prijaviti se..."

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  match '/users/:id',     to: 'users#show',       via: 'get'
-  devise_for :users, :path_prefix => 'd'
-  resources :users, :only =>[:show]
-  root 'home#index'
+
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/, defaults: {locale: "hr"} do
+    match '/users/:id',     to: 'users#show',       via: 'get'
+    devise_for :users, :path_prefix => 'd'
+    resources :users, :only =>[:show]
+    root 'home#index'
+  end
 end
