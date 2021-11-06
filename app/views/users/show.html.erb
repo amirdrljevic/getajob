@@ -11,9 +11,9 @@
 
     <nav class="blog-pagination" aria-label="Pagination">
     <% if @user == current_user %>
-      <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-outline-primary" %> 
+      <%= link_to t('users.show.edit_button'), edit_user_registration_path, class: "btn btn-outline-primary" %> 
     <% end %>
-      <%= link_to 'Back', root_path, class: "btn btn-outline-secondary" %>        
+      <%= link_to t('users.show.back_button'), root_path, class: "btn btn-outline-secondary" %>        
     </nav>
   </div>
 

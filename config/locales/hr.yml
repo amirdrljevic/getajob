@@ -2,7 +2,19 @@ hr:
   global:
     header:
       not_logged_in: "Niste ulogovani"
+      sign_up: "Registriraj se"
+      log_in: "Prijavi se"
+      log_out: "Odjavi se"
+      as_employer: "Kao poslodavac"
+      as_applicant: "Kao posloprimac"
+      view_profile: "Profil"
+      edit_profile: "Izmijeni profil"
   home:
     index:
       main_title: "Pronađi posao..."
       main_description: "Jedinstvena platforma za povezivanje poslodavaca i budućih uposlenika. Mjesto gdje poslodavci mogu objavljivati svoje oglase za posao koje je lako pretraživati i prijaviti se..."
+
+  users:
+    show:
+      edit_button: "Izmijeni"
+      back_button: "Nazad"
