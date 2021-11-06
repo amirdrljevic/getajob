@@ -18,12 +18,12 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><strong><%= current_user.first_name + ' ' + current_user.last_name %></strong> </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "View profile", user_path(current_user), class:"dropdown-item" %></li>
-              <li><%= link_to "Edit profile", edit_user_registration_path, class:"dropdown-item" %> </li>
+              <li><%= link_to t('global.header.view_profile'), user_path(current_user), class:"dropdown-item" %></li>
+              <li><%= link_to t('global.header.edit_profile'), edit_user_registration_path, class:"dropdown-item" %> </li>
             </ul>
           </li> 
           <li class="nav-item">
-	          <%= link_to "Log out", destroy_user_session_path,
+	          <%= link_to t('global.header.log_out'), destroy_user_session_path,
 	          						  method: :delete, class:"nav-link" %>
 	        </li>   
       	<% else %>
@@ -35,15 +35,15 @@
 		      </li>   
             
           <li class="nav-item dropdown nav-space-right">
-            <a class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Sign up </a>
+            <a class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><%= t'global.header.sign_up'%></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "As employer", new_user_registration_path(type_of: "employer"), class:"dropdown-item" %></li>
+              <li><%= link_to t('global.header.as_employer'), new_user_registration_path(type_of: "employer"), class:"dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>              
-              <li><%= link_to "As applicant", new_user_registration_path(type_of: "applicant"), class:"dropdown-item" %> </li>
+              <li><%= link_to t('global.header.as_applicant'), new_user_registration_path(type_of: "applicant"), class:"dropdown-item" %> </li>
             </ul>
           </li> 
 		      <li class="nav-item">
-		        <%= link_to "Log in", new_user_session_path, class:"btn btn-outline-light me-2" %>
+		        <%= link_to t('global.header.log_in'), new_user_session_path, class:"btn btn-outline-light me-2" %>
 		      </li>   
 		     <% end %>
           <li class="nav-item dropdown nav-space-right">         
@@ -57,14 +57,21 @@
             <% end %>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Hrvatski", root_path(locale: :hr), class:"dropdown-item" %></li>
-              <li><hr class="dropdown-divider"></li>              
-              <li><%= link_to "Engleski", root_path(locale: :en), class:"dropdown-item" %> </li>
+              <li>
+                <%= link_to url_for(locale: :hr), class: "dropdown-item" do %>
+                  <%= image_tag("hr.png", :class => "nav-space-right", alt: "Hrvatski", width: "20") %>
+                  Hrvatski
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider"></li>   
+              <li>
+                <%= link_to url_for(locale: :en), class: "dropdown-item" do %>
+                  <%= image_tag("en.png", :class => "nav-space-right", alt: "English", width: "20") %>
+                  English
+                <% end %>
+              </li>                         
             </ul>
           </li> 
-
-
-
       </ul>
     </div>
   </div>

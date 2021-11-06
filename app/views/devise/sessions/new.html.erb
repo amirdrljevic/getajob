@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h4>Log in</h4>
+    <h4><%= t 'devise.sessions.new.sign_in' %></h4>
   </div>
   <div class="card-body">
 
@@ -23,7 +23,7 @@
       <% end %>
 
       <div class="actions"><br/>
-        <%= f.submit "Log in", class:"btn btn-warning" %>
+        <%= f.submit t('devise.sessions.new.sign_in'), class:"btn btn-warning" %>
       </div>
     <% end %>
   </div>

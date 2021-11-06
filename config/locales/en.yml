@@ -2,7 +2,19 @@ en:
   global:
     header:
       not_logged_in: "Not logged in"
+      sign_up: "Sign up"
+      log_in: "Log in"
+      log_out: "Log out"      
+      as_employer: "As employer"
+      as_applicant: "As applicant"    
+      view_profile: "View profile"
+      edit_profile: "Edit profile"        
   home:
     index:
       main_title: "Get a job quickly..."
       main_description: "A unique platform that connects Employees and Employers. A place where employers can post their jobs and people can easily search and apply to job advertisements..."
+
+  users:
+    show:
+      edit_button: "Izmijeni"
+      back_button: "Nazad"
