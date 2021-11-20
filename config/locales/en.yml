@@ -18,3 +18,30 @@ en:
     show:
       edit_button: "Izmijeni"
       back_button: "Nazad"
+
+  jobs:
+    new:
+      jobs_title: "Create a new job posting"
+      back_button: "Back"
+
+    form:
+      submit_button: "Create job posting"
+
+  categories:
+    new:
+      category_title: "Create category"
+      back_button: "Back"     
+
+    form:
+      submit_button: "Create category"
+
+  activerecord:
+    attributes:
+      job:
+        title: "Title"
+        description: "Description"
+        category_id: "Category"
+        valid_until: "Valid until"      
+
+      category:
+        category_name: "Category name"        

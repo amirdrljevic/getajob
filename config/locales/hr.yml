@@ -18,3 +18,30 @@ hr:
     show:
       edit_button: "Izmijeni"
       back_button: "Nazad"
+
+  jobs:
+    new:
+      jobs_title: "Kreiraj novi oglas"
+      back_button: "Nazad"
+      
+    form:
+      submit_button: "Kreiraj oglas"
+
+  categories:
+    new:
+      category_title: "Kreiraj kategoriju"
+      back_button: "Nazad"
+
+    form:
+      submit_button: "Kreiraj kategoriju"      
+
+  activerecord:
+    attributes:
+      job:
+        title: "Naslov"
+        description: "Opis"
+        category_id: "Kategorija"
+        valid_until: "Važi do"
+      
+      category:
+        category_name: "Naziv kategorije"

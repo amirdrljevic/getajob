@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum type_of: { employer: "employer", applicant: "applicant" }
+  has_many :jobs, dependent: :destroy
 
 end
