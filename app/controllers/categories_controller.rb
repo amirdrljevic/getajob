@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy ]
+ # before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json
   def index
@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    
   end
 
   # GET /categories/1/edit
@@ -21,8 +22,9 @@ class CategoriesController < ApplicationController
 
   # POST /categories or /categories.json
   def create
+    byebug
     @category = Category.new(category_params)
-
+    byebug
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: "Category was successfully created." }

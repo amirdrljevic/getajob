@@ -13,6 +13,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'devise', '~> 4.8'
 gem 'rails-i18n', '~> 6.0'
+gem 'faker', '~> 2.19'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
