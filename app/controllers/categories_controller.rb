@@ -1,9 +1,15 @@
 class CategoriesController < ApplicationController
- # before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    if current_user.type_of == "employer"
+      @categories = Category.all
+      @category = Category.new
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /categories/1 or /categories/1.json
@@ -18,19 +24,23 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    
   end
 
   # POST /categories or /categories.json
   def create
-    byebug
+
     @category = Category.new(category_params)
-    byebug
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: "Category was successfully created." }
+        format.html { redirect_to categories_path, notice: t('categories.index.successful_save') }
         format.json { render :show, status: :created, location: @category }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        if params[:category][:category_name] == ""
+          format.html { redirect_to categories_path, notice: t('categories.index.empty_value') }
+        else 
+          format.html { redirect_to categories_path, notice: "#{t('categories.index.duplicate_value')} \"#{params[:category][:category_name]}\"" }
+        end
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
@@ -67,5 +77,9 @@ class CategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:category_name)
+    end
+
+    def user_is_employer
+
     end
 end

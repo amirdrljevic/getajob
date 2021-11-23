@@ -1,18 +1,15 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
-<h1>Categories</h1>
+<h1><%= t'categories.index.title'%></h1>
 <br>
 
-<%= link_to 'New Category', new_category_path %>
-
-
 <div class="row g-5">
-  <div class="col-md-8">
-    <table>
+  <div class="col-md-6">
+    <table class="table">
       <thead>
         <tr>
-          <th>Category name</th>
-          <th colspan="3"></th>
+          <th scope="col"><%= t'categories.index.category_name'%></th>
+          <th scope="col" colspan="2"></th>
         </tr>
       </thead>
 
@@ -20,18 +17,42 @@
         <% @categories.each do |category| %>
           <tr>
             <td><%= category.category_name %></td>
-            <td><%= link_to 'Show', category %></td>
-            <td><%= link_to 'Edit', edit_category_path(category) %></td>
-            <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><% link_to 'Show', category %></td>
+            <td><%= link_to t('categories.index.edit'), edit_category_path(category) %></td>
+            <td><%= link_to t('categories.index.destroy'), category, method: :delete, data: { confirm: t('categories.index.are_you_sure') } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <h4><%= t 'categories.new.category_title' %></h4>
 
+  <%= form_with(model: @category) do |form| %>
+    <% if @category.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+        <ul>
+          <% @category.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row mb-4">
+      <%= form.label :category_name, class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= form.text_field :category_name, class:"form-control" %>
+      </div>
+    </div>  
+
+    <div class="actions">
+      <%= form.submit t('categories.form.submit_button'), :class => 'btn btn-primary'  %>
+    </div>
+  <% end %>
 
 
   </div>

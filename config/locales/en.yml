@@ -31,6 +31,15 @@ en:
     new:
       category_title: "Create category"
       back_button: "Back"     
+    index:
+      title: "Categories"      
+      category_name: "Category name"
+      edit: "Edit"
+      destroy: "Delete"      
+      are_you_sure: "Are you sure?"      
+      empty_value: "Category name cannot be empty."
+      duplicate_value: "Duplicate category name "
+      successful_save: "You have successfully created a new category."      
 
     form:
       submit_button: "Create category"
