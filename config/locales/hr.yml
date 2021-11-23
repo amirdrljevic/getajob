@@ -31,6 +31,15 @@ hr:
     new:
       category_title: "Kreiraj kategoriju"
       back_button: "Nazad"
+    index:
+      title: "Kategorije"
+      category_name: "Naziv kategorije"
+      edit: "Uredi"
+      destroy: "Obriši"
+      are_you_sure: "Jeste li sigurni?"
+      empty_value: "Naziv kategorije ne može biti prazno."
+      duplicate_value: "Već postoji kategorija "
+      successful_save: "Uspješno ste kreirali kategoriju."
 
     form:
       submit_button: "Kreiraj kategoriju"      

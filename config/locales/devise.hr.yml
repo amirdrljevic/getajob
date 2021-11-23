@@ -12,7 +12,8 @@ hr:
         remember_me: "Zapamti me"
     models:
       user:
-        first_name: "Ime"      
+        one: "Ime"      
+        other: "Imena"
   devise:
     confirmations:
       confirmed: Vaš račun je uspješno potvrđen. Sad ste prijavljeni.
