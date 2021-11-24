@@ -8,7 +8,9 @@ en:
       as_employer: "As employer"
       as_applicant: "As applicant"    
       view_profile: "View profile"
-      edit_profile: "Edit profile"        
+      edit_profile: "Edit profile"    
+      new_job_button: "New job posting"
+      categories_button: "Categories"          
   home:
     index:
       main_title: "Get a job quickly..."

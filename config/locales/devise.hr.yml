@@ -90,6 +90,8 @@ hr:
         back: "Nazad"
       new:
         sign_up: "Registriraj se"
+        as_employer: " - Kao poslodavac"
+        as_applicant: " - Kao posloprimac"
       signed_up: Dobrodošli! Uspješno ste se registrirali.
       signed_up_but_inactive: Uspješno ste se registrirali. Doduše, ne možete se prijaviti u sustav zato što Vaš račun još nije aktiviran.
       signed_up_but_locked: Uspješno ste se registrirali. Nažalost ne možete se prijaviti jer Vam je račun zaključan.

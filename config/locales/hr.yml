@@ -9,6 +9,8 @@ hr:
       as_applicant: "Kao posloprimac"
       view_profile: "Profil"
       edit_profile: "Izmijeni profil"
+      new_job_button: "Kreiraj novi oglas"
+      categories_button: "Kategorije"
   home:
     index:
       main_title: "Pronađi posao..."
