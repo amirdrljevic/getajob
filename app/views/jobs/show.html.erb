@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<div class="row g-5">
+  <div class="col-md-8">
+    <article class="blog-post">
+      <h2 class="blog-post-title"><%= @job.title %></h2>
+      <p class="blog-post-meta fw-light"><%= t'jobs.show.created_at' %> <%= @job.created_at.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.category' %> <%= @job.category.category_name  %> </p>
+      <hr>
+      <p><%= @job.description %></p>     
+      <hr>
+      <p class="fw-light"><%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name + ', ' + @job.user.company_name %></p>
+    </article>
+    <br/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+    <nav class="blog-pagination" aria-label="Pagination">
+    <% if @job.user == current_user %>
+      <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-outline-primary" %> 
+    <% end %>
+      <%= link_to 'Back', jobs_path, class: "btn btn-outline-secondary" %>        
+    </nav>
+  </div>
+  <div class="col-md-4">
+    <h4>Most recent</h4>
 
-<p>
-  <strong>Category:</strong>
-  <%= @job.category_id %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @job.user_id %>
-</p>
-
-<p>
-  <strong>Valid until:</strong>
-  <%= @job.valid_until %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>

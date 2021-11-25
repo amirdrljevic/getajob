@@ -10,6 +10,7 @@ en:
       view_profile: "View profile"
       edit_profile: "Edit profile"    
       new_job_button: "New job posting"
+      jobs_button: "View jobs"      
       categories_button: "Categories"          
   home:
     index:
@@ -25,6 +26,19 @@ en:
     new:
       jobs_title: "Create a new job posting"
       back_button: "Back"
+
+    index:
+      title: "Job postings"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Delete"        
+      new_job_button: "Create new job posting"          
+
+    show:
+      created_at: "Created: "
+      category: "Category: "
+      valid_until: "Valid until: "
+      posted_by: "Posted by: "      
 
     form:
       submit_button: "Create job posting"
@@ -52,6 +66,7 @@ en:
         title: "Title"
         description: "Description"
         category_id: "Category"
+        user_id: "Posted by"
         valid_until: "Valid until"      
 
       category:

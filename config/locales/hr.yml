@@ -10,6 +10,7 @@ hr:
       view_profile: "Profil"
       edit_profile: "Izmijeni profil"
       new_job_button: "Kreiraj novi oglas"
+      jobs_button: "Prikaži oglase"
       categories_button: "Kategorije"
   home:
     index:
@@ -25,6 +26,19 @@ hr:
     new:
       jobs_title: "Kreiraj novi oglas"
       back_button: "Nazad"
+    
+    index:
+      title: "Oglasi za posao"
+      show: "Prikaži"
+      edit: "Izmijeni"
+      destroy: "Obriši"      
+      new_job_button: "Kreiraj novi oglas"
+    
+    show:
+      created_at: "Objavljeno: "
+      category: "Kategorija: "
+      valid_until: "Vrijedi do: "
+      posted_by: "Autor: "
       
     form:
       submit_button: "Kreiraj oglas"
@@ -36,7 +50,7 @@ hr:
     index:
       title: "Kategorije"
       category_name: "Naziv kategorije"
-      edit: "Uredi"
+      edit: "Izmijeni"
       destroy: "Obriši"
       are_you_sure: "Jeste li sigurni?"
       empty_value: "Naziv kategorije ne može biti prazno."
@@ -52,6 +66,7 @@ hr:
         title: "Naslov"
         description: "Opis"
         category_id: "Kategorija"
+        user_id: "Autor"
         valid_until: "Važi do"
       
       category:
