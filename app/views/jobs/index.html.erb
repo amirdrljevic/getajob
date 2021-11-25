@@ -6,7 +6,6 @@
     <thead>
       <tr>
         <th scope="col"><%= t 'activerecord.attributes.job.title' %></th>
-        <th scope="col"><%= t 'activerecord.attributes.job.description' %></th>
         <th scope="col"><%= t 'activerecord.attributes.job.category_id' %></th>
         <th scope="col"><%= t 'activerecord.attributes.job.user_id' %></th>
         <th scope="col"><%= t 'activerecord.attributes.job.valid_until' %></th>
@@ -18,12 +17,11 @@
       <% @jobs.each do |job| %>
         <tr>
           <td><%= link_to job.title, job %></td>
-          <td><%= job.description %></td>
           <td><%= job.category.category_name %></td>
           <td><%= job.user.first_name + ' ' + job.user.last_name %></td>
           <td><%= job.valid_until %></td>
           <td><%= link_to t('jobs.index.edit'), edit_job_path(job) %></td>
-          <td><%= link_to t('jobs.index.destroy'), job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t('jobs.index.destroy'), job, method: :delete, data: { confirm: t('categories.index.are_you_sure') } %></td>
         </tr>
       <% end %>
     </tbody>
