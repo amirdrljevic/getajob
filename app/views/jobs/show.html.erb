@@ -8,7 +8,7 @@
       <hr>
       <p><%= @job.description %></p>     
       <hr>
-      <p class="fw-light"><%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name + ', ' + @job.user.company_name %></p>
+      <p class="fw-light"><%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name %>, <i><%= @job.user.company_name %></i></p>
     </article>
     <br/>
 
