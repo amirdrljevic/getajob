@@ -1,35 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Jobs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>User</th>
-      <th>Valid until</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
+<h1><%= t 'jobs.index.title' %></h1>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.category_id %></td>
-        <td><%= job.user_id %></td>
-        <td><%= job.valid_until %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="col"><%= t 'activerecord.attributes.job.title' %></th>
+        <th scope="col"><%= t 'activerecord.attributes.job.description' %></th>
+        <th scope="col"><%= t 'activerecord.attributes.job.category_id' %></th>
+        <th scope="col"><%= t 'activerecord.attributes.job.user_id' %></th>
+        <th scope="col"><%= t 'activerecord.attributes.job.valid_until' %></th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.title, job %></td>
+          <td><%= job.description %></td>
+          <td><%= job.category.category_name %></td>
+          <td><%= job.user.first_name + ' ' + job.user.last_name %></td>
+          <td><%= job.valid_until %></td>
+          <td><%= link_to t('jobs.index.edit'), edit_job_path(job) %></td>
+          <td><%= link_to t('jobs.index.destroy'), job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to t('jobs.index.new_job_button'), new_job_path %>
