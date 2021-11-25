@@ -9,7 +9,7 @@ en:
       as_applicant: "As applicant"    
       view_profile: "View profile"
       edit_profile: "Edit profile"    
-      new_job_button: "New job posting"
+      new_job_button: "New job post"
       jobs_button: "View jobs"      
       categories_button: "Categories"          
   home:
@@ -19,29 +19,33 @@ en:
 
   users:
     show:
-      edit_button: "Izmijeni"
-      back_button: "Nazad"
+      edit_button: "Edit"
+      back_button: "Back"
 
   jobs:
     new:
-      jobs_title: "Create a new job posting"
+      jobs_title: "Create a new job post"
       back_button: "Back"
 
     index:
-      title: "Job postings"
+      title: "Job posts"
       show: "Show"
       edit: "Edit"
       destroy: "Delete"        
-      new_job_button: "Create new job posting"          
+      new_job_button: "Create new job post"          
 
     show:
       created_at: "Created: "
       category: "Category: "
       valid_until: "Valid until: "
       posted_by: "Posted by: "      
+      company: "Company:"      
 
     form:
-      submit_button: "Create job posting"
+      submit_button: "Create job post"
+
+    controller:
+      not_authorized: "Not authorized to edit this job post."      
 
   categories:
     new:
@@ -67,7 +71,8 @@ en:
         description: "Description"
         category_id: "Category"
         user_id: "Posted by"
-        valid_until: "Valid until"      
+        valid_until: "Valid until"    
+        company: "Company"  
 
       category:
         category_name: "Category name"        

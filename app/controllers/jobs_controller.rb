@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /jobs or /jobs.json
   def index
@@ -65,5 +66,10 @@ class JobsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_params
       params.require(:job).permit(:title, :description, :category_id, :user_id, :valid_until)
+    end
+
+    def correct_user
+      @job = current_user.jobs.find_by(id: params[:id])
+      redirect_to jobs_path, notice: t('jobs.controller.not_authorized') if @job.nil?
     end
 end

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1><%= t 'jobs.index.title' %></h1>
 <div class="table-responsive">
@@ -7,9 +7,14 @@
       <tr>
         <th scope="col"><%= t 'activerecord.attributes.job.title' %></th>
         <th scope="col"><%= t 'activerecord.attributes.job.category_id' %></th>
-        <th scope="col"><%= t 'activerecord.attributes.job.user_id' %></th>
+        <% if user_signed_in? && current_user.type_of == "employer" %> 
+          <th scope="col"><%= t 'activerecord.attributes.job.user_id' %></th>
+        <% end %>
+        <th scope="col"><%= t 'activerecord.attributes.job.company' %></th>        
         <th scope="col"><%= t 'activerecord.attributes.job.valid_until' %></th>
-        <th colspan="2"></th>
+        <% if user_signed_in? && current_user.type_of == "employer" %> 
+          <th colspan="2"></th>
+        <% end %>
       </tr>
     </thead>
 
@@ -18,15 +23,21 @@
         <tr>
           <td><%= link_to job.title, job %></td>
           <td><%= job.category.category_name %></td>
-          <td><%= job.user.first_name + ' ' + job.user.last_name %></td>
+          <% if user_signed_in? && current_user.type_of == "employer" %> 
+            <td><%= job.user.first_name + ' ' + job.user.last_name %></td>
+          <% end %>
+          <td><%= job.user.company_name %></td>          
           <td><%= job.valid_until %></td>
-          <td><%= link_to t('jobs.index.edit'), edit_job_path(job) %></td>
-          <td><%= link_to t('jobs.index.destroy'), job, method: :delete, data: { confirm: t('categories.index.are_you_sure') } %></td>
+          <% if user_signed_in? && current_user.type_of == "employer" && job.user == current_user %> 
+            <td><%= link_to t('jobs.index.edit'), edit_job_path(job) %></td>
+            <td><%= link_to t('jobs.index.destroy'), job, method: :delete, data: { confirm: t('categories.index.are_you_sure') } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 <br>
-
-<%= link_to t('jobs.index.new_job_button'), new_job_path %>
+<% if user_signed_in? && current_user.type_of == "employer" %> 
+  <%= link_to t('jobs.index.new_job_button'), new_job_path %>
+<% end %>

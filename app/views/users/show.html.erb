@@ -3,9 +3,9 @@
     <article class="blog-post">
       <h2 class="blog-post-title"><%= @user.first_name + ' ' + @user.last_name %></h2>
       <hr>
-      <p><%= @user.email %></p>  
+      <p>Email: <%= @user.email %></p>  
       <% if @user.type_of == "employer" %>    
-        <p><%= @user.company_name %> </p>
+        <p><%= t('activerecord.attributes.job.company')+': '+ @user.company_name  %> </p>
       <% end %>
     </article>
 

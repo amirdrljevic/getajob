@@ -4,19 +4,30 @@
   <div class="col-md-8">
     <article class="blog-post">
       <h2 class="blog-post-title"><%= @job.title %></h2>
-      <p class="blog-post-meta fw-light"><%= t'jobs.show.created_at' %> <%= @job.created_at.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.category' %> <%= @job.category.category_name  %> </p>
+      <p class="blog-post-meta fw-light">
+        <% if user_signed_in? && current_user.type_of == "applicant" %> 
+          <%= t'jobs.show.company' %> <%= @job.user.company_name  %> <br/>
+        <% end %>
+        <%= t'jobs.show.created_at' %> <%= @job.created_at.strftime("%_d. %B %Y.") %> <br/>
+        <%= t'jobs.show.category' %> <%= @job.category.category_name  %> 
+      </p>
       <hr>
-      <p><%= @job.description %></p>     
+      <p><%= @job.description %></p>           
       <hr>
-      <p class="fw-light"><%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/><%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name %>, <i><%= @job.user.company_name %></i></p>
+      <p class="fw-light">
+        <%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/>
+        <% if user_signed_in? && current_user.type_of == "employer" %> 
+          <%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name %>, <i><%= @job.user.company_name %></i>
+        <% end %>
+      </p>      
     </article>
     <br/>
 
     <nav class="blog-pagination" aria-label="Pagination">
     <% if @job.user == current_user %>
-      <%= link_to 'Edit', edit_job_path(@job), class: "btn btn-outline-primary" %> 
+      <%= link_to t('users.show.edit_button'), edit_job_path(@job), class: "btn btn-outline-primary" %> 
     <% end %>
-      <%= link_to 'Back', jobs_path, class: "btn btn-outline-secondary" %>        
+      <%= link_to t('users.show.back_button'), jobs_path, class: "btn btn-outline-secondary" %>        
     </nav>
   </div>
   <div class="col-md-4">

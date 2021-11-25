@@ -39,9 +39,13 @@ hr:
       category: "Kategorija: "
       valid_until: "Vrijedi do: "
       posted_by: "Autor: "
+      company: "Tvrtka:"
       
     form:
       submit_button: "Kreiraj oglas"
+
+    controller:
+      not_authorized: "Niste ovlašteni da mijenjate ovaj oglas."
 
   categories:
     new:
@@ -68,6 +72,7 @@ hr:
         category_id: "Kategorija"
         user_id: "Autor"
         valid_until: "Važi do"
-      
+        company: "Tvrtka"
+
       category:
         category_name: "Naziv kategorije"
