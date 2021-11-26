@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_171700) do
+ActiveRecord::Schema.define(version: 2021_11_26_102246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.text "cover_letter"
+    t.string "education"
+    t.string "telephone"
+    t.date "date_of_birth"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_applications_on_job_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -37,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_171700) do
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'user_type' for column 'type_of'
 
+  add_foreign_key "applications", "jobs"
+  add_foreign_key "applications", "users"
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "users"
 end
