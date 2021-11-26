@@ -60,9 +60,12 @@ hr:
       empty_value: "Naziv kategorije ne može biti prazno."
       duplicate_value: "Već postoji kategorija "
       successful_save: "Uspješno ste kreirali kategoriju."
-
     form:
       submit_button: "Kreiraj kategoriju"      
+
+  applications:
+    controller:
+      not_authorized: "Niste ovlašteni za pristup ovom resursu."
 
   activerecord:
     attributes:

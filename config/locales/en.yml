@@ -60,9 +60,12 @@ en:
       empty_value: "Category name cannot be empty."
       duplicate_value: "Duplicate category name "
       successful_save: "You have successfully created a new category."      
-
     form:
       submit_button: "Create category"
+
+  applications:
+    controller:
+      not_authorized: "You are not authorized to access this resource."      
 
   activerecord:
     attributes:
