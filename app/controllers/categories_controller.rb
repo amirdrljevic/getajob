@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :logged_in_user     
+  before_action :correct_user, only: [:new, :create, :show, :edit, :update, :destroy]    
   before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
 
   # GET /categories or /categories.json
   def index
@@ -79,7 +80,19 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:category_name)
     end
 
-    def user_is_employer
-
-    end
+    def logged_in_user
+      unless user_signed_in?
+        respond_to do |format|
+          format.html { redirect_to new_user_session_path, notice: t('global.controller.not_logged_in') }
+          format.json { head :no_content }      
+        end
+      end    
+    end    
+    
+    def correct_user
+      # Only users of type 'employer' can create job posts
+      if current_user.type_of != "employer"
+        redirect_to jobs_path, notice: t('jobs.controller.not_authorized') if @job.nil?
+      end
+    end    
 end

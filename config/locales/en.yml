@@ -10,8 +10,11 @@ en:
       view_profile: "View profile"
       edit_profile: "Edit profile"    
       new_job_button: "New job post"
-      jobs_button: "View jobs"      
-      categories_button: "Categories"          
+      jobs_button: "View jobs"     
+      applications_button: "My applications"       
+      categories_button: "Categories"    
+    controller:
+      not_logged_in: "You must log in to access this page."            
   home:
     index:
       main_title: "Get a job quickly..."
@@ -26,26 +29,23 @@ en:
     new:
       jobs_title: "Create a new job post"
       back_button: "Back"
-
     index:
       title: "Job posts"
       show: "Show"
       edit: "Edit"
       destroy: "Delete"        
       new_job_button: "Create new job post"          
-
     show:
       created_at: "Created: "
       category: "Category: "
       valid_until: "Valid until: "
       posted_by: "Posted by: "      
       company: "Company:"      
-
     form:
-      submit_button: "Create job post"
-
+      submit_create_button: "Create job post"
+      submit_edit_button: "Edit job post"
     controller:
-      not_authorized: "Not authorized to edit this job post."      
+      not_authorized: "Not authorized to access this page."      
 
   categories:
     new:
@@ -66,6 +66,10 @@ en:
   applications:
     controller:
       not_authorized: "You are not authorized to access this resource."      
+    create:
+      successfully_created: "You have successfully applied to this job post"      
+    index: 
+      title: "My applications"      
 
   activerecord:
     attributes:

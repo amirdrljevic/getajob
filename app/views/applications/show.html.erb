@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <p>
   <strong>User:</strong>
@@ -35,5 +35,5 @@
   <%= @application.address %>
 </p>
 
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
+<%= link_to 'Edit', edit_job_application_path(@application.job_id, @application.user_id) %> |
+<%= link_to 'Back', job_applications_path %>

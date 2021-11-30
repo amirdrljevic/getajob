@@ -24,10 +24,13 @@
     <br/>
 
     <nav class="blog-pagination" aria-label="Pagination">
-    <% if @job.user == current_user %>
-      <%= link_to t('users.show.edit_button'), edit_job_path(@job), class: "btn btn-outline-primary" %> 
-    <% end %>
+      <% if @job.user == current_user %>
+        <%= link_to t('users.show.edit_button'), edit_job_path(@job), class: "btn btn-outline-primary" %> 
+      <% end %>
       <%= link_to t('users.show.back_button'), jobs_path, class: "btn btn-outline-secondary" %>        
+      <% if current_user.type_of == "applicant" %>
+        <%= link_to "APPLY", new_job_application_path(@job), class: "btn btn-primary" %>
+      <% end %>
     </nav>
   </div>
   <div class="col-md-4">

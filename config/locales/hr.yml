@@ -11,7 +11,10 @@ hr:
       edit_profile: "Izmijeni profil"
       new_job_button: "Kreiraj novi oglas"
       jobs_button: "Prikaži oglase"
+      applications_button: "Moje prijave"
       categories_button: "Kategorije"
+    controller:
+      not_logged_in: "Morate se prijaviti da biste pristupili ovoj stranici."
   home:
     index:
       main_title: "Pronađi posao..."
@@ -25,27 +28,24 @@ hr:
   jobs:
     new:
       jobs_title: "Kreiraj novi oglas"
-      back_button: "Nazad"
-    
+      back_button: "Nazad"    
     index:
       title: "Oglasi za posao"
       show: "Prikaži"
       edit: "Izmijeni"
       destroy: "Obriši"      
-      new_job_button: "Kreiraj novi oglas"
-    
+      new_job_button: "Kreiraj novi oglas"    
     show:
       created_at: "Objavljeno: "
       category: "Kategorija: "
       valid_until: "Vrijedi do: "
       posted_by: "Autor: "
-      company: "Tvrtka:"
-      
+      company: "Tvrtka:"      
     form:
-      submit_button: "Kreiraj oglas"
-
+      submit_create_button: "Kreiraj oglas"
+      submit_edit_button: "Izmijeni oglas"
     controller:
-      not_authorized: "Niste ovlašteni da mijenjate ovaj oglas."
+      not_authorized: "Niste ovlašteni za pristup."
 
   categories:
     new:
@@ -66,6 +66,10 @@ hr:
   applications:
     controller:
       not_authorized: "Niste ovlašteni za pristup ovom resursu."
+    create:
+      successfully_created: "Uspješno ste se prijavili na ovaj oglas za posao."
+    index: 
+      title: "Moje prijave"
 
   activerecord:
     attributes:

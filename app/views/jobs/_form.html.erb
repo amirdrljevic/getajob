@@ -44,7 +44,11 @@
     </div>    
 
     <div class="actions">
-      <%= form.submit t('jobs.form.submit_button'), :class => 'btn btn-primary' %>
+      <% if controller_name == 'jobs' && action_name == 'edit' %>
+        <%= form.submit t('jobs.form.submit_edit_button'), :class => 'btn btn-primary' %>
+      <% else%>
+        <%= form.submit t('jobs.form.submit_create_button'), :class => 'btn btn-primary' %>
+      <% end %>
     </div>
   <% end %>  
 <br/>

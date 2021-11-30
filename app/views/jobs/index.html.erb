@@ -5,6 +5,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th></th>
         <th scope="col"><%= t 'activerecord.attributes.job.title' %></th>
         <th scope="col"><%= t 'activerecord.attributes.job.category_id' %></th>
         <% if user_signed_in? && current_user.type_of == "employer" %> 
@@ -19,8 +20,9 @@
     </thead>
 
     <tbody>
-      <% @jobs.each do |job| %>
+      <% @jobs.each.with_index(1) do |job, index| %>
         <tr>
+          <td><%= index %></td>
           <td><%= link_to job.title, job %></td>
           <td><%= job.category.category_name %></td>
           <% if user_signed_in? && current_user.type_of == "employer" %> 

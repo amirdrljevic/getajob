@@ -8,14 +8,16 @@
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th scope="col"><%= t'categories.index.category_name'%></th>
           <th scope="col" colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @categories.each do |category| %>
+        <% @categories.each.with_index(1) do |category, index| %> 
           <tr>
+            <td><%= index %></td>
             <td><%= category.category_name %></td>
             <td><% link_to 'Show', category %></td>
             <td><%= link_to t('categories.index.edit'), edit_category_path(category) %></td>
