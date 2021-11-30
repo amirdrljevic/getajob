@@ -20,6 +20,11 @@
 	          <%= link_to t('global.header.jobs_button'), jobs_path, class:"nav-link" %>
 	        </li> 
         <% end %> 
+        <% if user_signed_in? && current_user.type_of == "applicant" %>           
+        	<li class="nav-item">
+	          <%= link_to t('global.header.applications_button'), applications_path, class:"nav-link" %>
+	        </li> 
+        <% end %>
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0 ">
       	<% if user_signed_in? %>

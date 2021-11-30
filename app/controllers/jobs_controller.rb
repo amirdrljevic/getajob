@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
+  before_action :logged_in_user  
+  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]    
   before_action :set_job, only: %i[ show edit update destroy ]
-  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /jobs or /jobs.json
   def index
@@ -68,8 +69,20 @@ class JobsController < ApplicationController
       params.require(:job).permit(:title, :description, :category_id, :user_id, :valid_until)
     end
 
+    def logged_in_user
+      unless user_signed_in?
+        respond_to do |format|
+          format.html { redirect_to new_user_session_path, notice: t('global.controller.not_logged_in') }
+          format.json { head :no_content }      
+        end
+      end    
+    end         
+
     def correct_user
-      @job = current_user.jobs.find_by(id: params[:id])
-      redirect_to jobs_path, notice: t('jobs.controller.not_authorized') if @job.nil?
+      # Only users of type 'employer' can create job posts
+      if current_user.type_of != "employer"
+        #@job = current_user.jobs.find_by(id: params[:id])
+        redirect_to jobs_path, notice: t('jobs.controller.not_authorized') if @job.nil?
+      end
     end
 end
