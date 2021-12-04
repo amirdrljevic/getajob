@@ -12,20 +12,6 @@
   <% end %>
 
   <div class="row mb-3">
-    <%= form.label :user_id, class:"col-sm-2 col-form-label"  %>
-    <div class="col-sm-10">
-      <%= form.text_field :user_id, class:"form-control" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <%= form.label :job_id, class:"col-sm-2 col-form-label"  %>
-    <div class="col-sm-10">
-      <%= form.text_field :job_id, class:"form-control" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
     <%= form.label :cover_letter, class:"col-sm-2 col-form-label"  %>
     <div class="col-sm-10">
       <%= form.text_area :cover_letter, class:"form-control" %>
@@ -61,7 +47,11 @@
   </div>
 
   <div class="actions">
-    <%= form.submit :class => 'btn btn-primary' %>
+    <% if controller_name == 'applications' && action_name == 'edit' %>
+      <%= form.submit t('applications.form.submit_edit_button'), :class => 'btn btn-primary' %>
+    <% else %>
+      <%= form.submit t('applications.form.submit_create_button'), :class => 'btn btn-primary' %>
+    <% end %>
   </div>
 <% end %>
 <br/>

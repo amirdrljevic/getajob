@@ -1,6 +1,6 @@
-<h1>Editing Application</h1>
+<h4><%= t'applications.edit.page_title' %></h4>
 
 <%= render 'form', application: @application %>
 
-<%= link_to 'Show', job_application_path %> |
-<%= link_to 'Back', job_applications_path %>
+<%= link_to t('applications.edit.show_button'), job_application_path %> |
+<%= link_to t('applications.edit.back_button'), applications_path %>

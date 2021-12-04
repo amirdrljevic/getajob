@@ -41,11 +41,13 @@ en:
       valid_until: "Valid until: "
       posted_by: "Posted by: "      
       company: "Company:"      
+      apply_button: "APPLY"  
     form:
       submit_create_button: "Create job post"
       submit_edit_button: "Edit job post"
     controller:
       not_authorized: "Not authorized to access this page."      
+      job_expired: "Job post has expired."
 
   categories:
     new:
@@ -66,10 +68,38 @@ en:
   applications:
     controller:
       not_authorized: "You are not authorized to access this resource."      
+      has_expired: "This job post has expired. You cannot edit it."
     create:
       successfully_created: "You have successfully applied to this job post"      
     index: 
-      title: "My applications"      
+      title: "My applications"    
+      job_post: "Title"
+      company: "Company"
+      category: "Category"  
+      valid_until: "Valid until"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Delete"
+    show:
+      edit_button: "Edit"
+      back_button: "Back"  
+      part_of_title: "Application for job post: "    
+      company: "Company: "
+      category: "Category: "
+      cover_letter: "Cover letter: "
+      education: "Education: "
+      telephone: "Telephone: "
+      dob: "Date of birth: "
+      address: "Address: "
+      valid_until: "Job post is open until: " 
+      has_expired: "Job post has expired on: "    
+    edit:
+      page_title: "Edit application"     
+      show_button: "Show"
+      back_button: "Back"       
+    form:
+      submit_edit_button: "Edit application"
+      submit_create_button: "Apply"      
 
   activerecord:
     attributes:
@@ -80,6 +110,5 @@ en:
         user_id: "Posted by"
         valid_until: "Valid until"    
         company: "Company"  
-
       category:
         category_name: "Category name"        

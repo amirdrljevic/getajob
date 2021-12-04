@@ -8,14 +8,14 @@
         <% if user_signed_in? && current_user.type_of == "applicant" %> 
           <%= t'jobs.show.company' %> <%= @job.user.company_name  %> <br/>
         <% end %>
-        <%= t'jobs.show.created_at' %> <%= @job.created_at.strftime("%_d. %B %Y.") %> <br/>
+        <%= t'jobs.show.created_at' %> <%= l @job.created_at, format: '%_d. %B %Y.' %> <br/>
         <%= t'jobs.show.category' %> <%= @job.category.category_name  %> 
       </p>
       <hr>
       <p><%= @job.description %></p>           
       <hr>
       <p class="fw-light">
-        <%= t'jobs.show.valid_until' %> <%= @job.valid_until.strftime("%_d. %B %Y.") %> <br/>
+        <%= t'jobs.show.valid_until' %> <%= l @job.valid_until, format: '%_d. %B %Y.' %> <br/>
         <% if user_signed_in? && current_user.type_of == "employer" %> 
           <%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name %>, <i><%= @job.user.company_name %></i>
         <% end %>
@@ -28,8 +28,8 @@
         <%= link_to t('users.show.edit_button'), edit_job_path(@job), class: "btn btn-outline-primary" %> 
       <% end %>
       <%= link_to t('users.show.back_button'), jobs_path, class: "btn btn-outline-secondary" %>        
-      <% if current_user.type_of == "applicant" %>
-        <%= link_to "APPLY", new_job_application_path(@job), class: "btn btn-primary" %>
+      <% if current_user.type_of == "applicant" && @job.expired? %>
+        <%= link_to t('jobs.show.apply_button'), new_job_application_path(@job), class: "btn btn-primary" %>
       <% end %>
     </nav>
   </div>

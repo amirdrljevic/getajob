@@ -40,12 +40,14 @@ hr:
       category: "Kategorija: "
       valid_until: "Vrijedi do: "
       posted_by: "Autor: "
-      company: "Tvrtka:"      
+      company: "Tvrtka:"    
+      apply_button: "PRIJAVI SE"  
     form:
       submit_create_button: "Kreiraj oglas"
       submit_edit_button: "Izmijeni oglas"
     controller:
       not_authorized: "Niste ovlašteni za pristup."
+      job_expired: "Oglas je istekao."
 
   categories:
     new:
@@ -66,10 +68,38 @@ hr:
   applications:
     controller:
       not_authorized: "Niste ovlašteni za pristup ovom resursu."
+      has_expired: "Ovaj oglas za posao je istekao. Ne možete ga mijenjati."
     create:
       successfully_created: "Uspješno ste se prijavili na ovaj oglas za posao."
     index: 
       title: "Moje prijave"
+      job_post: "Naslov"
+      company: "Tvrtka"
+      category: "Kategorija"  
+      valid_until: "Vrijedi do"
+      show: "Prikaži"
+      edit: "Izmijeni"
+      destroy: "Obriši"
+    show:
+      edit_button: "Izmijeni"
+      back_button: "Nazad"
+      part_of_title: "Prijava za poziciju: "
+      company: "Tvrtka: "
+      category: "Kategorija: "
+      cover_letter: "Popratno pismo: "
+      education: "Obrazovanje: "
+      telephone: "Telefon: "
+      dob: "Datum rođenja: "
+      address: "Adresa: "
+      valid_until: "Oglas je otvoren do: "
+      has_expired: "Oglas je istekao na dan: "
+    edit:
+      page_title: "Izmjena aplikacije"
+      show_button: "Prikaži"
+      back_button: "Nazad"
+    form:
+      submit_edit_button: "Izmijeni aplikaciju"
+      submit_create_button: "Apliciraj"
 
   activerecord:
     attributes:
@@ -80,6 +110,22 @@ hr:
         user_id: "Autor"
         valid_until: "Važi do"
         company: "Tvrtka"
-
       category:
-        category_name: "Naziv kategorije"
+        category_name: "Naziv kategorije"    
+    errors: 
+      template:
+        header: 
+          one: "1 greška je spriječila spašavanje."
+          other: "%{count} greške sprječavanje spašavanje."
+        body: "Problem je sa sljedećim poljima:"
+      models:
+        job:
+          attributes:
+            title:
+              blank: " polje ne smije biti prazno."
+            description:
+              blank: " ne smije biti prazan."
+            category_id:
+              blank: "Morate odabrati kategoriju."
+            valid_until:
+              blank: " ne smije biti prazno."
