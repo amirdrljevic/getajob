@@ -1,11 +1,11 @@
 class JobsController < ApplicationController
   before_action :logged_in_user  
   before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]    
-  before_action :set_job, only: %i[ show edit update destroy ]
+  before_action :set_job, only: %i[show edit update destroy ]
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.where('valid_until >= ?', DateTime.now.to_date)
   end
 
   # GET /jobs/1 or /jobs/1.json

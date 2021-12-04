@@ -1,16 +1,15 @@
 <p id="notice"><% notice %></p>
 
-<h1><%= t 'applications.index.title' %></h1>
+<h4><%= t 'applications.index.title' %></h4>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Rb</th>    
-      <th scope="col">Job post</th>
-      <th scope="col">Company</th>
-      <th scope="col">Telephone</th>
-      <th scope="col">Date of birth</th>
-      <th scope="col">Address</th>
+      <th scope="col"></th>    
+      <th scope="col"><%= t'applications.index.job_post'%></th>
+      <th scope="col"><%= t'applications.index.company'%></th>
+      <th scope="col"><%= t'applications.index.category'%></th>
+      <th scope="col"><%= t'applications.index.valid_until'%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,14 +18,17 @@
     <% @applications.each.with_index(1) do |application, index| %>
       <tr>
         <td><%= index %></td>      
-        <td><%= application.job.title %></td>
+        <td><%= link_to application.job.title, job_application_path(job_id: application.job.id, id: application.id) %></td>
         <td><%= application.job.user.company_name %></td>
-        <td><%= application.telephone %></td>
-        <td><%= application.date_of_birth %></td>
-        <td><%= application.address %></td>
-        <td><%= link_to 'Show', job_application_path(job_id: application.job.id, id: application.id) %></td>
-        <td><%= link_to 'Edit', edit_job_application_path(job_id: application.job.id, id: application.id) %></td>
-        <td><%= link_to 'Destroy', job_application_path(job_id: application.job.id, id: application.id), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <td><%= application.job.category.category_name %></td>
+        <td class="<%= class_names('text-danger': !application.job.expired?) %>"><%= application.job.valid_until %></td>
+        <td><% link_to t('applications.index.show'), job_application_path(job_id: application.job.id, id: application.id) %></td>
+        <% if application.job.expired? %>
+          <td><%= link_to t('applications.index.edit'), edit_job_application_path(job_id: application.job.id, id: application.id) %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= link_to t('applications.index.destroy'), job_application_path(job_id: application.job.id, id: application.id), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
   </tbody>

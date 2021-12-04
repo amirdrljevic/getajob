@@ -4,6 +4,8 @@ class ApplicationsController < ApplicationController
   before_action :set_application, only: %i[ show edit update destroy ]
   before_action :user_applicant, only: [:new, :create, :edit, :update]
   before_action :get_job
+  before_action :expired, only: [ :edit, :update]
+  before_action :expired_on_new, only: [:new, :create]
 
   # GET /applications or /applications.json
   def index
@@ -13,6 +15,8 @@ class ApplicationsController < ApplicationController
     else
       @applications = @job.applications
     end
+
+    #byebug
   end
 
   # GET /applications/1 or /applications/1.json
@@ -105,6 +109,22 @@ class ApplicationsController < ApplicationController
       @application = Application.find(params[:id])
       if current_user.id != @application.user_id
         redirect_to root_url, notice: t('applications.controller.not_authorized')
+      end
+    end
+
+    def expired
+      # Prevent users from editing application if the job post has expired
+      @application = Application.find(params[:id])
+      @job = Job.find(params[:job_id])
+      if !@job.expired?
+        redirect_to job_application_path(job_id: @application.job.id, id: @application.id), notice: t('applications.controller.has_expired')
+      end
+    end
+
+    def expired_on_new
+      @job = Job.find(params[:job_id])
+      if !@job.expired?
+        redirect_to job_path(@job), notice: t('jobs.controller.job_expired')
       end
     end
 end

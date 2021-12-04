@@ -1,39 +1,42 @@
 <p id="notice"><% notice %></p>
+<div class="row g-5">
+  <div class="col-md-8">
+    <article class="blog-post bg-light p-4 rounded">
+      <h4 class="blog-post-title"><%= t'applications.show.part_of_title'%> <%= link_to @job.title, job_path(@job), class: "no-underline" %></h4>
+      <p class="blog-post-meta fw-light">
+        <%= t'applications.show.company' %> <%= @job.user.company_name  %> <br/>
+        <%= t'jobs.show.category' %> <%= @job.category.category_name  %> 
+      </p>
+      <hr>
+      <h5><%= t'applications.show.cover_letter' %></h5>
+      <p><%= @application.cover_letter %></p>     
+      <p><span class="fw-bold"><%= t'applications.show.education' %></span><%= @application.education %></p>      
+      <p><span class="fw-bold"><%= t'applications.show.telephone' %></span> <%= @application.telephone %> </p>      
+      <p><span class="fw-bold"><%= t'applications.show.dob' %></span> <%= @application.date_of_birth %> </p>      
+      <p><span class="fw-bold"><%= t'applications.show.address' %></span> <%= @application.address %> </p>      
 
-<p>
-  <strong>User:</strong>
-  <%= @application.user_id %>
-</p>
+      <hr>
+      <p class="fw-light">
+        <span class="<%= class_names('text-danger': !@job.expired?) %>">
+          <%= @job.expired? ? t('applications.show.valid_until') : t('applications.show.has_expired') %> <%= l @job.valid_until, format: '%_d. %B %Y.' %> <br/>
+        </span>
+        <% if user_signed_in? && current_user.type_of == "employer" %> 
+          <%= t'jobs.show.posted_by' %> <%= @job.user.first_name + ' ' + @job.user.last_name %>, <i><%= @job.user.company_name %></i>
+        <% end %>
+      </p>      
+    </article>
+    <br/>
 
-<p>
-  <strong>Job:</strong>
-  <%= @application.job_id %>
-</p>
+    <nav class="blog-pagination" aria-label="Pagination">
+      <% if (@application.user == current_user) && (@job.expired?) %>
+        <%= link_to t('applications.show.edit_button'), edit_job_application_path(@application.job_id, @application.id), class: "btn btn-outline-primary" %> 
+      <% end %>
+      <%= link_to t('applications.show.back_button'), applications_path, class: "btn btn-outline-secondary" %>            
+    </nav>
+  </div>
+  <div class="col-md-4">
+    <h4>Nešto ovdje?</h4>
 
-<p>
-  <strong>Cover letter:</strong>
-  <%= @application.cover_letter %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Education:</strong>
-  <%= @application.education %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @application.telephone %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @application.date_of_birth %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @application.address %>
-</p>
-
-<%= link_to 'Edit', edit_job_application_path(@application.job_id, @application.user_id) %> |
-<%= link_to 'Back', job_applications_path %>
